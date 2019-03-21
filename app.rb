@@ -1,18 +1,16 @@
 require_relative 'config/environment'
 
-configure do
-  enable :sessions
-  set :session_secret, "tiddlywinks"
-end
-
 class App < Sinatra::Base
-end
 
-
-  get '/'
-    erb :index
+  configure do
+    enable :sessions
+    set :session_secret, "tiddlywinks"
   end
 
+
+  get '/' do
+    erb :index
+  end
 
   post '/checkout' do
     @session = session
@@ -29,15 +27,6 @@ end
 
 end
 *******
-require_relative 'config/environment'
-
-class App < Sinatra::Base
-
-  configure do
-    enable :sessions
-    set :session_secret, 'flatiron'
-  end
-
   get '/' do
     erb :index
   end
